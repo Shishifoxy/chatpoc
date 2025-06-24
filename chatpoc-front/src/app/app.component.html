@@ -1,0 +1,30 @@
+<div>
+  <h2>Chat PoC</h2>
+
+  <label>Nom : <input [(ngModel)]="sender" /></label>
+
+  <label>Rôle :
+    <select [(ngModel)]="role" (ngModelChange)="onRoleChange()">
+      <option value="client">Client</option>
+      <option value="support">Support</option>
+    </select>
+  </label>
+
+  <div *ngIf="role === 'support'">
+    <h3>Rooms disponibles</h3>
+    <ul>
+      <li *ngFor="let room of rooms" (click)="joinRoom(room)" style="cursor: pointer">
+        {{ room }}
+      </li>
+    </ul>
+  </div>
+
+  <div *ngIf="roomId">
+    <h3>Room: {{ roomId }}</h3>
+    <div *ngFor="let msg of getFilteredMessages()">
+      <b>{{ msg.sender }} ({{ msg.role }}):</b> {{ msg.content }}
+    </div>
+    <input [(ngModel)]="content" placeholder="Message" />
+    <button (click)="sendMessage()">Envoyer</button>
+  </div>
+</div>

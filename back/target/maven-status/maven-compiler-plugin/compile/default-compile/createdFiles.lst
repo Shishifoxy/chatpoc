@@ -1,0 +1,6 @@
+com\chatpoc\config\WebSocketConfig.class
+com\chatpoc\controller\ChatController.class
+com\chatpoc\ChatPocApplication.class
+com\chatpoc\config\CorsConfig.class
+com\chatpoc\dto\ChatDto.class
+com\chatpoc\config\CorsConfig$1.class
