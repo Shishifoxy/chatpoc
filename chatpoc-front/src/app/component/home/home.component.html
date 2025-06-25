@@ -1,0 +1,21 @@
+<div>
+    <h2>Accueil - Support Chat</h2>
+
+    <label>Nom :
+        <input [(ngModel)]="author" placeholder="Ton nom..." />
+    </label>
+
+    <label>Rôle :
+        <select [(ngModel)]="role">
+            <option value="client">Client</option>
+            <option value="support">Support</option>
+        </select>
+    </label>
+
+    <h3>Rooms Support Disponibles</h3>
+    <ul>
+        <li *ngFor="let room of rooms" (click)="joinRoom(room)" style="cursor: pointer;">
+            {{ room }}
+        </li>
+    </ul>
+</div>

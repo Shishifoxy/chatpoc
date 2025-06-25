@@ -1,30 +1,29 @@
 package com.chatpoc.dto;
 
 public class ChatDto {
-    private String message;
-    private String sender;
+    private String text;
+    private String author;
 
     public ChatDto() {}
 
-    public ChatDto(String message, String sender) {
-        this.message = message;
-        this.sender = sender;
+    public ChatDto(String text, String author) {
+        this.text = text;
+        this.author = author;
     }
 
-    public String getMessage() {
-        return message;
+    public String getText() {
+        return text;
     }
 
-    public void setMessage(String message) {
-        this.message = message;
+    public void setText(String text) {
+        this.text = text;
     }
 
-    public String getSender() {
-        return sender;
+    public String getAuthor() {
+        return author;
     }
 
-    public void setSender(String sender) {
-        this.sender = sender;
+    public void setAuthor(String author) {
+        this.author = author;
     }
 }
-

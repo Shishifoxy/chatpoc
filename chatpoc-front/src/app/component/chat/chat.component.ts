@@ -6,32 +6,28 @@ import { ChatMessage } from '../../models/chat-message.model';
 @Component({
   selector: 'app-chat',
   templateUrl: './chat.component.html',
-  styleUrls: ['./chat.component.css']
 })
 export class ChatComponent implements OnInit {
-  messageInput: string = '';
+  roomId!: string;
+  author!: string;
+  role!: string;
+  content: string = '';
   messageList: ChatMessage[] = [];
-  sender: string = '';
 
-  constructor(private chatService: ChatService, private route: ActivatedRoute) {}
+  constructor(private route: ActivatedRoute, private chatService: ChatService) {}
 
   ngOnInit(): void {
-    this.sender = this.route.snapshot.params['userId'] || 'client';
-
-    this.chatService.getMessages().subscribe((messages) => {
+    this.roomId = this.route.snapshot.paramMap.get('roomId') || 'Room 1';
+    this.author = this.route.snapshot.queryParamMap.get('author') || 'anonymous';
+    this.role = this.route.snapshot.queryParamMap.get('role') || 'client';
+    this.chatService.subscribeToRoom(this.roomId);
+    this.chatService.getMessages().subscribe(messages => {
       this.messageList = messages;
     });
   }
 
-  sendMessage(): void {
-    if (this.messageInput.trim()) {
-      this.chatService.sendMessage(this.messageInput, this.sender);
-      this.messageInput = '';
-    }
+  sendMessage() {
+    this.chatService.sendMessage(this.content, this.author, this.roomId);
+    this.content = '';
   }
-
-  isSender(msg: ChatMessage): boolean {
-    return msg.author === this.sender;
-  }
-
 }
