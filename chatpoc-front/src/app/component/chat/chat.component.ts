@@ -20,14 +20,16 @@ export class ChatComponent implements OnInit {
     this.roomId = this.route.snapshot.paramMap.get('roomId') || 'Room 1';
     this.author = this.route.snapshot.queryParamMap.get('author') || 'anonymous';
     this.role = this.route.snapshot.queryParamMap.get('role') || 'client';
+
     this.chatService.subscribeToRoom(this.roomId);
+
     this.chatService.getMessages().subscribe(messages => {
-      this.messageList = messages;
+      this.messageList = messages.filter(m => m.roomId === this.roomId);
     });
   }
 
   sendMessage() {
-    this.chatService.sendMessage(this.content, this.author, this.roomId);
+    this.chatService.sendMessage(this.content, this.author, this.roomId, this.role);
     this.content = '';
   }
 }

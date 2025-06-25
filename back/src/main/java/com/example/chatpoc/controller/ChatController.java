@@ -12,6 +12,7 @@ public class ChatController {
     @MessageMapping("/chat/{room}")
     @SendTo("/topic/{room}")
     public ChatDto handleMessage(@DestinationVariable String room, ChatDto message) {
-        return new ChatDto(message.getText(), message.getAuthor());
+        message.setRoomId(room);
+        return message;
     }
 }

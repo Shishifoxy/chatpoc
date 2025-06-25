@@ -3,7 +3,7 @@
 
     <ul class="messages">
         <li *ngFor="let msg of messageList">
-            <strong>{{ msg.author }} :</strong> {{ msg.text }}
+            <strong>({{ msg.role }})</strong> <em>{{ msg.author }}</em> :{{ msg.text }}
         </li>
     </ul>
 
