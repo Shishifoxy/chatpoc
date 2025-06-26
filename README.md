@@ -74,3 +74,5 @@ Accessible sur : `http://localhost:4200`
 - `WebSocketConfig.java` : config WebSocket
 - `ChatController.java` : réception / renvoi des messages
 - `ChatDto.java` : modèle de données des messages
+
+A la racine du projet, vous trouverez également **un fichier script.sql** contenu dans **un dossier scriptsql** contenant tout la structure de la base de données relationnelle.
